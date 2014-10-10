@@ -2,7 +2,7 @@
 
 Summary:	MATE Screensaver
 Name:		mate-screensaver
-Version:	1.8.0
+Version:	1.8.1
 Release:	1
 License:	GPLv2+
 Group:		Graphical desktop/GNOME
@@ -46,8 +46,9 @@ NOCONFIGURE=yes ./autogen.sh
 
 %build
 %configure2_5x \
-	--with-shadow \
 	--enable-locking \
+	--enable-pam \
+	--with-shadow \
 	--with-systemd \
 	--disable-more-warnings
 
