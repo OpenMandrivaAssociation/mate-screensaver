@@ -17,8 +17,9 @@ BuildRequires:	pkgconfig(gtk+-2.0)
 BuildRequires:	pkgconfig(libmate-menu)
 BuildRequires:	pkgconfig(libmatekbdui)
 BuildRequires:	pkgconfig(libnotify)
-BuildRequires:	pkgconfig(mate-desktop-2.0)
+BuildRequires:	pkgconfig(libsystemd)
 BuildRequires:	pkgconfig(libsystemd-login)
+BuildRequires:	pkgconfig(mate-desktop-2.0)
 BuildRequires:	pkgconfig(xscrnsaver)
 Requires:	dbus-x11
 Suggests:	mandriva-theme-screensaver
