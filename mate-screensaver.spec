@@ -2,8 +2,8 @@
 
 Summary:	MATE Screensaver
 Name:		mate-screensaver
-Version:	1.8.1
-Release:	2
+Version:	1.14.1
+Release:	1
 License:	GPLv2+
 Group:		Graphical desktop/GNOME
 Url:		http://mate-desktop.org
@@ -13,12 +13,11 @@ BuildRequires:	mate-common
 BuildRequires:	pam-devel
 BuildRequires:	pkgconfig(dbus-glib-1)
 BuildRequires:	pkgconfig(gl)
-BuildRequires:	pkgconfig(gtk+-2.0)
+BuildRequires:	pkgconfig(gtk+-3.0)
 BuildRequires:	pkgconfig(libmate-menu)
 BuildRequires:	pkgconfig(libmatekbdui)
 BuildRequires:	pkgconfig(libnotify)
 BuildRequires:	pkgconfig(libsystemd)
-BuildRequires:	pkgconfig(libsystemd-login)
 BuildRequires:	pkgconfig(mate-desktop-2.0)
 BuildRequires:	pkgconfig(xscrnsaver)
 Requires:	dbus-x11
@@ -51,7 +50,8 @@ NOCONFIGURE=yes ./autogen.sh
 	--enable-pam \
 	--with-shadow \
 	--with-systemd \
-	--disable-more-warnings
+	--disable-more-warnings \
+	--with-gtk=3.0
 
 %make
 
