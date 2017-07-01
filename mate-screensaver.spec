@@ -2,9 +2,9 @@
 
 Summary:	MATE Screensaver
 Name:		mate-screensaver
-Version:	1.14.1
+Version:	1.18.1
 Release:	1
-License:	GPLv2+
+License:	GPLv2+ and LGPLv2+
 Group:		Graphical desktop/GNOME
 Url:		http://mate-desktop.org
 Source0:	http://pub.mate-desktop.org/releases/%{url_ver}/%{name}-%{version}.tar.xz
@@ -42,29 +42,28 @@ This package contains the pkgconfig file for %{name}.
 %prep
 %setup -q
 %apply_patches
-NOCONFIGURE=yes ./autogen.sh
 
 %build
-%configure2_5x \
+#NOCONFIGURE=yes ./autogen.sh
+%configure \
 	--enable-locking \
 	--enable-pam \
 	--with-shadow \
 	--with-systemd \
 	--disable-more-warnings \
-	--with-gtk=3.0
-
+	--enable-pam \
+	--without-console-kit \
+	%{nil}
 %make
 
 %install
 %makeinstall_std
 
-# remove unneeded converter
-rm -fr %{buildroot}%{_datadir}/MateConf
-
-%find_lang %{name}
+# locales
+%find_lang %{name} --with-gnome --all-name
 
 %files -f %{name}.lang
-%doc README AUTHORS
+%doc COPYING AUTHORS NEWS README
 %{_sysconfdir}/pam.d/mate-screensaver
 %{_sysconfdir}/xdg/autostart/%{name}.desktop
 %{_sysconfdir}/xdg/menus/mate-screensavers.menu
