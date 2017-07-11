@@ -8,6 +8,8 @@ License:	GPLv2+ and LGPLv2+
 Group:		Graphical desktop/GNOME
 Url:		http://mate-desktop.org
 Source0:	http://pub.mate-desktop.org/releases/%{url_ver}/%{name}-%{version}.tar.xz
+
+BuildRequires:	desktop-file-utils
 BuildRequires:	intltool
 BuildRequires:	mate-common
 BuildRequires:	pam-devel
@@ -20,59 +22,38 @@ BuildRequires:	pkgconfig(libnotify)
 BuildRequires:	pkgconfig(libsystemd)
 BuildRequires:	pkgconfig(mate-desktop-2.0)
 BuildRequires:	pkgconfig(xscrnsaver)
+
 Requires:	dbus-x11
+
 Suggests:	mandriva-theme-screensaver
 
 %description
-mate-screensaver is a screen saver and locker that aims to have
-simple, sane, secure defaults and be well integrated with the desktop.
-It is designed to support:
+The MATE Desktop Environment is the continuation of GNOME 2. It provides an
+intuitive and attractive desktop environment using traditional metaphors for
+Linux and other Unix-like operating systems.
 
-* the ability to lock down configuration settings
-* translation into other languages
-* user switching
+MATE is under active development to add support for new technologies while
+preserving a traditional desktop experience.
 
-%package devel
-Summary:	Pkgconfig file for %{name}
-Group:		Development/Other
+MATE Screensaver is a screen saver and locker that aims to have simple,
+sane, secure defaults and be well integrated with the desktop. It is
+designed to support:
 
-%description devel
-This package contains the pkgconfig file for %{name}.
-
-%prep
-%setup -q
-%apply_patches
-
-%build
-#NOCONFIGURE=yes ./autogen.sh
-%configure \
-	--enable-locking \
-	--enable-pam \
-	--with-shadow \
-	--with-systemd \
-	--disable-more-warnings \
-	--enable-pam \
-	--without-console-kit \
-	%{nil}
-%make
-
-%install
-%makeinstall_std
-
-# locales
-%find_lang %{name} --with-gnome --all-name
+  * the ability to lock down configuration settings
+  * translation into many languages
+  * user switching
 
 %files -f %{name}.lang
 %doc COPYING AUTHORS NEWS README
-%{_sysconfdir}/pam.d/mate-screensaver
+%config(noreplace) %{_sysconfdir}/pam.d/mate-screensaver
+%config(noreplace) %{_sysconfdir}/xdg/menus/mate-screensavers.menu
 %{_sysconfdir}/xdg/autostart/%{name}.desktop
-%{_sysconfdir}/xdg/menus/mate-screensavers.menu
 %{_bindir}/*
+%{_libexecdir}/mate-screensaver-dialog
 %{_libexecdir}/mate-screensaver-gl-helper
 %{_libexecdir}/mate-screensaver/floaters
 %{_libexecdir}/mate-screensaver/popsquares
 %{_libexecdir}/mate-screensaver/slideshow
-%{_libexecdir}/mate-screensaver-dialog
 %{_datadir}/applications/mate-screensaver-preferences.desktop
 %{_datadir}/applications/screensavers/cosmos-slideshow.desktop
 %{_datadir}/applications/screensavers/footlogo-floaters.desktop
@@ -91,6 +72,44 @@ This package contains the pkgconfig file for %{name}.
 %{_datadir}/pixmaps/gnome-logo-white.svg
 %{_mandir}/man1/mate-screensaver*
 
-%files devel        
+#---------------------------------------------------------------------------
+
+%package devel
+Summary:	Pkgconfig file for %{name}
+Group:		Development/Other
+
+%description devel
+This package contains the pkgconfig file for %{name}.
+
+%files devel
 %{_libdir}/pkgconfig/mate-screensaver.pc
+
+#---------------------------------------------------------------------------
+
+%prep
+%setup -q
+%apply_patches
+
+%build
+#NOCONFIGURE=yes ./autogen.sh
+%configure \
+	--disable-more-warnings \
+	--disable-schemas-compile \
+	--enable-docbook-docs \
+	%{nil}
+%make
+
+%install
+%makeinstall_std
+
+# locales
+%find_lang %{name} --with-gnome --all-name
+
+%check
+desktop-file-validate %{buildroot}%{_datadir}/applications/mate-screensaver-preferences.desktop
+desktop-file-validate %{buildroot}%{_datadir}/applications/screensavers/cosmos-slideshow.desktop
+desktop-file-validate %{buildroot}%{_datadir}/applications/screensavers/footlogo-floaters.desktop
+desktop-file-validate %{buildroot}%{_datadir}/applications/screensavers/gnomelogo-floaters.desktop
+desktop-file-validate %{buildroot}%{_datadir}/applications/screensavers/personal-slideshow.desktop
+desktop-file-validate %{buildroot}%{_datadir}/applications/screensavers/popsquares.desktop
 
