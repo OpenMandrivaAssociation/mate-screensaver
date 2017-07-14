@@ -22,6 +22,7 @@ BuildRequires:	pkgconfig(libnotify)
 BuildRequires:	pkgconfig(libsystemd)
 BuildRequires:	pkgconfig(mate-desktop-2.0)
 BuildRequires:	pkgconfig(xscrnsaver)
+BuildRequires:	xmlto
 
 Requires:	dbus-x11
 
