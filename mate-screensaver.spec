@@ -105,7 +105,7 @@ This package contains the pkgconfig file for %{name}.
 %makeinstall_std
 
 # fix doc path
-mv -f %{_docdir}/%{name}-%{version} %{_docdir}/%{name}
+mv -f %{buildroot}%{_docdir}/%{name}-%{version} %{buildroot}%{_docdir}/%{name}
 
 # locales
 %find_lang %{name} --with-gnome --all-name
