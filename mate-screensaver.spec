@@ -2,7 +2,7 @@
 
 Summary:	MATE Screensaver
 Name:		mate-screensaver
-Version:	1.20.0
+Version:	1.20.3
 Release:	1
 License:	GPLv2+ and LGPLv2+
 Group:		Graphical desktop/Other
@@ -89,7 +89,7 @@ This package contains the pkgconfig file for %{name}.
 
 %prep
 %setup -q
-%apply_patches
+%autopatch -p1
 
 %build
 #NOCONFIGURE=yes ./autogen.sh
@@ -98,10 +98,10 @@ This package contains the pkgconfig file for %{name}.
 	--disable-schemas-compile \
 	--enable-docbook-docs \
 	%{nil}
-%make
+%make_build
 
 %install
-%makeinstall_std
+%make_install
 
 # fix doc path
 mv -f %{buildroot}%{_docdir}/%{name}-%{version} %{buildroot}%{_docdir}/%{name}
