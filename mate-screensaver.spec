@@ -71,6 +71,8 @@ designed to support:
 %{_datadir}/mate-screensaver/*
 %{_datadir}/pixmaps/mate-logo-white.svg
 %{_datadir}/pixmaps/gnome-logo-white.svg
+%dir %{_docdir}/%{name}/
+%{_docdir}/%{name}/%{name}.html
 %{_mandir}/man1/mate-screensaver*
 
 #---------------------------------------------------------------------------
