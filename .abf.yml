@@ -3,5 +3,6 @@ removed_sources:
   mate-screensaver-1.18.1.tar.xz: 4789902f30b1e6f54ad6b84a490c91ca28b5246c
   mate-screensaver-1.18.2.tar.xz: 5ccca96c7d5b59bbac547ce6607390f257090313
   mate-screensaver-1.20.0.tar.xz: e92303ccfa7bfc6b9f62390852d65b8b0318cab7
-sources:
   mate-screensaver-1.20.3.tar.xz: 4c1ae62d5b43db8632ca22da47ddf146767cc98f
+sources:
+  mate-screensaver-1.22.1.tar.xz: 48148b2f26527c0d5227e4ba1d3154c124d7f24b

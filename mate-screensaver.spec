@@ -2,7 +2,7 @@
 
 Summary:	MATE Screensaver
 Name:		mate-screensaver
-Version:	1.20.3
+Version:	1.22.1
 Release:	1
 License:	GPLv2+ and LGPLv2+
 Group:		Graphical desktop/Other
