@@ -72,9 +72,8 @@ designed to support:
 %{_datadir}/mate-screensaver/*
 %{_datadir}/pixmaps/mate-logo-white.svg
 %{_datadir}/pixmaps/gnome-logo-white.svg
-%dir %{_docdir}/%{name}/
-%{_docdir}/%{name}/%{name}.html
-%{_mandir}/man1/mate-screensaver*
+%doc %{_docdir}/%{name}/%{name}.html
+%doc %{_mandir}/man1/mate-screensaver*
 
 #---------------------------------------------------------------------------
 
@@ -91,8 +90,7 @@ This package contains the pkgconfig file for %{name}.
 #---------------------------------------------------------------------------
 
 %prep
-%setup -q
-%autopatch -p1
+%autosetup -p1
 
 %build
 #NOCONFIGURE=yes ./autogen.sh
