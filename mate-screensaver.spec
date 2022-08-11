@@ -3,12 +3,13 @@
 Summary:	MATE Screensaver
 Name:		mate-screensaver
 Version:	1.26.1
-Release:	2
+Release:	3
 License:	GPLv2+ and LGPLv2+
 Group:		Graphical desktop/Other
 Url:		http://mate-desktop.org
 Source0:	http://pub.mate-desktop.org/releases/%{url_ver}/%{name}-%{version}.tar.xz
-
+Patch1:		mate-screensaver_0001-mate-screensaver-preferences-fix-memory-leak.patch
+Patch2:		mate-screensaver_0002-mate-screensaver-preferences-fix-memory-leak.patch
 BuildRequires:	autoconf-archive
 BuildRequires:	desktop-file-utils
 BuildRequires:	intltool
@@ -23,11 +24,15 @@ BuildRequires:	pkgconfig(libnotify)
 BuildRequires:	pkgconfig(libsystemd)
 BuildRequires:	pkgconfig(mate-desktop-2.0)
 BuildRequires:	pkgconfig(xscrnsaver)
+BuildRequires:	pkgconfig(x11)
+BuildRequires:	pkgconfig(xscrnsaver)
+BuildRequires:	pkgconfig(xinerama)
+BuildRequires:	pkgconfig(xmu)
+BuildRequires:	pkgconfig(xtst)
+BuildRequires:	pkgconfig(xxf86vm)
 BuildRequires:	xmlto
-
 Requires:	dbus-x11
-
-Suggests:	mandriva-theme-screensaver
+Suggests:	distro-release-theme
 
 %description
 The MATE Desktop Environment is the continuation of GNOME 2. It provides an
@@ -98,7 +103,15 @@ This package contains the pkgconfig file for %{name}.
 	--disable-more-warnings \
 	--disable-schemas-compile \
 	--enable-docbook-docs \
-	%{nil}
+	--with-mit-ext \
+	--with-xf86gamma-ext \
+	--with-libgl \
+	--with-shadow \
+	--enable-locking \
+	--with-systemd \
+	--enable-pam \
+	--without-console-kit
+
 %make_build
 
 %install
@@ -117,4 +130,3 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/screensavers/footlogo
 desktop-file-validate %{buildroot}%{_datadir}/applications/screensavers/gnomelogo-floaters.desktop
 desktop-file-validate %{buildroot}%{_datadir}/applications/screensavers/personal-slideshow.desktop
 desktop-file-validate %{buildroot}%{_datadir}/applications/screensavers/popsquares.desktop
-

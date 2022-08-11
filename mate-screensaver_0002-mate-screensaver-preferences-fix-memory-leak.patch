@@ -1,0 +1,41 @@
+From ff4270809d096292a3b532046b6145d7a3b3dfb0 Mon Sep 17 00:00:00 2001
+From: rbuj <robert.buj@gmail.com>
+Date: Sun, 30 Jan 2022 17:59:08 +0100
+Subject: [PATCH 2/2] mate-screensaver-preferences: fix memory leak
+
+---
+ src/mate-screensaver-preferences.c | 9 +++++----
+ 1 file changed, 5 insertions(+), 4 deletions(-)
+
+diff --git a/src/mate-screensaver-preferences.c b/src/mate-screensaver-preferences.c
+index 46e780e..286218e 100644
+--- a/src/mate-screensaver-preferences.c
++++ b/src/mate-screensaver-preferences.c
+@@ -663,19 +663,20 @@ separator_func (GtkTreeModel *model,
+                 GtkTreeIter  *iter,
+                 gpointer      data)
+ {
+-	int   column = GPOINTER_TO_INT (data);
+-	char *text;
++	int       column = GPOINTER_TO_INT (data);
++	gboolean  res = FALSE;
++	char     *text;
+ 
+ 	gtk_tree_model_get (model, iter, column, &text, -1);
+ 
+ 	if (text != NULL && strcmp (text, "__separator") == 0)
+ 	{
+-		return TRUE;
++		res = TRUE;
+ 	}
+ 
+ 	g_free (text);
+ 
+-	return FALSE;
++	return res;
+ }
+ 
+ static void
+-- 
+2.36.1
+
