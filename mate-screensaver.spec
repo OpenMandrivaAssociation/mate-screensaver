@@ -2,14 +2,13 @@
 
 Summary:	MATE Screensaver
 Name:		mate-screensaver
-Version:	1.26.1
-Release:	3
+Version:	1.26.2
+Release:	1
 License:	GPLv2+ and LGPLv2+
 Group:		Graphical desktop/Other
 Url:		http://mate-desktop.org
 Source0:	http://pub.mate-desktop.org/releases/%{url_ver}/%{name}-%{version}.tar.xz
-Patch1:		mate-screensaver_0001-mate-screensaver-preferences-fix-memory-leak.patch
-Patch2:		mate-screensaver_0002-mate-screensaver-preferences-fix-memory-leak.patch
+
 BuildRequires:	autoconf-archive
 BuildRequires:	desktop-file-utils
 BuildRequires:	intltool
