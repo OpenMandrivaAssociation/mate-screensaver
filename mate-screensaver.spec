@@ -104,6 +104,7 @@ This package contains the pkgconfig file for %{name}.
 
 %build
 export AR=ar
+export RANLIB=ranlib
 #NOCONFIGURE=yes ./autogen.sh
 %configure \
 	--disable-more-warnings \
