@@ -66,6 +66,8 @@ designed to support:
 %{_libexecdir}/mate-screensaver/floaters
 %{_libexecdir}/mate-screensaver/popsquares
 %{_libexecdir}/mate-screensaver/slideshow
+%{_libexecdir}/mate-screensaver/starfield
+%{_datadir}/applications/screensavers/starfield.desktop
 %{_datadir}/applications/mate-screensaver-preferences.desktop
 %{_datadir}/applications/screensavers/cosmos-slideshow.desktop
 %{_datadir}/applications/screensavers/footlogo-floaters.desktop
