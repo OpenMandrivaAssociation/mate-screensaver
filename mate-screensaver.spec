@@ -103,6 +103,7 @@ This package contains the pkgconfig file for %{name}.
 %autosetup -p1
 
 %build
+export AR=ar
 #NOCONFIGURE=yes ./autogen.sh
 %configure \
 	--disable-more-warnings \
